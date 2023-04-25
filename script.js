@@ -1,4 +1,6 @@
-(() => {
+import checkComplete from "./components/checkComplete.js";
+import deleteIcon from "./components/deleteIcon.js";
+
 const btn = document.querySelector('[data-form-btn]');
 
 const createTask =(evento)=>{
@@ -20,37 +22,24 @@ const createTask =(evento)=>{
     titleTask.innerText = value;
     taskContent.appendChild(checkComplete());
     taskContent.appendChild(titleTask);
+    taskContent.appendChild(deleteIcon());
 
     //content captura lo que el usuario escribe
-    const content =`   
-    
-<i class="fas fa-trash-alt trashIcon icon"></i>`;
+   // const content =`   -- reemplazado en deleteIcon
+//<i class="fas fa-trash-alt trashIcon icon"></i>`;
     
   //  task.innerHTML = content; // escribe en el input de las tareas
-    task.appendChild(taskContent) //crea contenido hijo para el icono check
+    task.appendChild(taskContent); //crea contenido hijo para el icono check
+    task.appendChild(deleteIcon());
     list.appendChild(task); //crea contenido hijo
 
 };
 
 
 //arrow fuctions o funciones anónimas
-btn.addEventListener('click', createTask)
+btn.addEventListener('click', createTask);
 
 //Crear constante de la i 
 // <i class="far fa-check-square icon"></i>
-const checkComplete = () => {
-    const i = document.createElement("i")
-    i.classList.add('far','fa-check-square','icon')
-    i.addEventListener('click', completeTask);
 
-    return i
-};
-  // Immediately invoked function expression IIFE -  seleccionar y deseleccionar el check- tambien se llama a la clase fas para poner en azul el check.
-const completeTask = (event) => {
-    const element = event.target;
-    element.classList.toggle('fas');
-    element.classList.toggle('completeIcon');
-    element.classList.toggle('far');
-};
 
-})();
